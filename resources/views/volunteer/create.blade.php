@@ -9,19 +9,51 @@
 
                 <div class="card-body">
 <form>
+    <div class="form-group">
+    <label for="name">{{__('Name')}}:</label>
+    <input type="text" class="form-control" id="name">
+  </div>
   <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
+    <label for="exampleInputEmail1">{{__('Email')}}:</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <small id="emailHelp" class="form-text text-muted">Mail će biti prosleđen jedino onima kojima želite da pomognete.</small>
+  </div>
+      <div class="form-group">
+    <label for="phone">{{__('Phone')}}:</label>
+    <input type="text" class="form-control" id="phone">
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
-  </div>
-  <div class="form-group form-check">
+
+  <label>{{__('General volunteer support')}}:</label>
+</div>
+<div class="row">
+    <div class="col">
+          <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    <label class="form-check-label" for="exampleCheck1">{{__('Delivery of goods')}}</label>
   </div>
+    </div>
+        <div class="col">
+          <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">{{__('Childcare')}}</label>
+  </div>
+</div>
+          <div class="col">
+          <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">{{__('Eldercare')}}</label>
+  </div>
+    </div>
+              <div class="col">
+          <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">{{__('Legal assistance')}}</label>
+  </div>
+    </div>
+    
+</div>
+
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
                 </div>
