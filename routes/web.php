@@ -21,10 +21,7 @@ Route::get('locale/{locale}', function ($locale){
 
 Auth::routes();
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@welcome')->name('welcome');
 
 Route::get('/map', 'HomeController@map')->name('map');
 

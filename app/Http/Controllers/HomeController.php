@@ -30,4 +30,8 @@ class HomeController extends Controller
     {
         return view('map');
     }
+    public function welcome()
+    {
+        return view('welcome');
+    }
 }
