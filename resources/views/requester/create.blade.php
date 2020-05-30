@@ -5,10 +5,56 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{__('Offer to help')}}</div>
+                <div class="card-header">{{__('Ask for help')}}</div>
 
                 <div class="card-body">
 <form>
+  <p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    {{__('If you ask for someone else click this button first')}}
+  </a>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body" style="background-color:rgba(140,190,250,0.7);">
+    <h5>{{__('Enter your own data')}}</h5>
+    <hr>
+    <div class="row">
+      <div class="col">
+                <div class="form-group">
+    <label for="name">{{__('Name')}}:</label>
+    <input type="text" class="form-control" id="name">
+  </div>
+      </div>
+            <div class="col">
+                <div class="form-group">
+    <label for="name">{{__('Relationship')}}:</label>
+    <input type="text" class="form-control" id="name">
+  </div>
+      </div>
+    </div>
+
+  <div class="row">
+    <div class="col">
+       <div class="form-group">
+    <label for="exampleInputEmail1">{{__('Email')}}:</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+    </div>
+    <div class="col">
+            <div class="form-group">
+    <label for="phone">{{__('Phone')}}:</label>
+    <input type="text" class="form-control" id="phone">
+  </div>
+    </div>
+  </div>
+              <div class="form-group">
+    <label for="address">{{__('Address')}}:</label>
+    <textarea class="form-control" name="address" id="" rows="5"></textarea>
+  </div>
+ 
+
+  </div>
+</div>
     <div class="form-group">
     <label for="name">{{__('Name')}}:</label>
     <input type="text" class="form-control" id="name">
@@ -16,7 +62,6 @@
   <div class="form-group">
     <label for="exampleInputEmail1">{{__('Email')}}:</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <small id="emailHelp" class="form-text text-muted">Mail će biti prosleđen jedino onima kojima želite da pomognete.</small>
   </div>
       <div class="form-group">
     <label for="phone">{{__('Phone')}}:</label>
@@ -24,7 +69,7 @@
   </div>
   <div class="form-group">
 
-  <label>{{__('General volunteer support')}}:</label>
+  <label>{{__('I need help for')}}:</label>
 </div>
 <div class="row">
     <div class="col">

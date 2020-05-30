@@ -3,11 +3,17 @@
 	"Offer to help":"Ponudi pomoć",
 	"About us":"O nama..",
 	"General volunteer support":"Osnovna pomoć koju mogu da ponudim",
-	"Name":"ime",
+	"Name":"Ime",
 	"Email":"Email",
 	"Phone":"Telefon",
 	"Delivery of goods":"Dostava hrane i lekova",
 	"Childcare":"Čuvanje dece",
 	"Eldercare":"Čuvanje starih",
-	"Legal assistance":"Pravna pomoć"
+	"Legal assistance":"Pravna pomoć",
+	"Choose location":"Izaberi lokaciju",
+	"I need help for":"Treba mi pomoć za",
+	"If you ask for someone else click this button first":"Ukoliko postavljate zahtev za drugu osobu kliknite na ovo dugme prvo",
+	"Enter your own data":"Unesite svoje podatke",
+	"Relationship":"Veza sa osobom za koju tražite pomoć",
+	"Address":"Adresa"
 }

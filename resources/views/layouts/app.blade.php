@@ -35,7 +35,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Ask for help') }}</a>
+                                <a class="nav-link" href="{{ route('requester.create') }}">{{ __('Ask for help') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('volunteer.create') }}">{{ __('Offer to help') }}</a>

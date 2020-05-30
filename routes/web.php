@@ -26,3 +26,4 @@ Route::get('/', 'HomeController@map')->name('home');
 Route::get('/map', 'HomeController@map')->name('map');
 
 Route::resource('/volunteer', 'VolunteerController');
+Route::resource('/requester', 'RequesterController');
