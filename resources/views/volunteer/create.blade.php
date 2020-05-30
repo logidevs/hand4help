@@ -64,6 +64,8 @@
         </div>
     </div>
 
+</div>
+</div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
                 </div>
@@ -91,10 +93,16 @@
         map.addListener('click', function(mapsMouseEvent) {
           // Close the current InfoWindow.
           infoWindow.close();
+           var myLatLng = mapsMouseEvent.latLng;
+            var lat = myLatLng.lat();
+            var lng = myLatLng.lng();
 
           // Create a new InfoWindow.
           infoWindow = new google.maps.InfoWindow({position: mapsMouseEvent.latLng});
           infoWindow.setContent(mapsMouseEvent.latLng.toString());
+
+          document.getElementById('lat').value = lat;
+          document.getElementById('lng').value = lng;
           infoWindow.open(map);
         });
       }
