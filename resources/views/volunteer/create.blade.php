@@ -63,6 +63,19 @@
             <div id="map" style="width:100%;height:200px;"></div>
         </div>
     </div>
+<div class="row">
+    <div class="col">
+    <div class="form-group">
+    <label for="lat">{{__('Lat')}}:</label>
+    <input type="text" class="form-control" id="lat" name="lat">
+  </div>
+
+    </div>
+        <div class="col">
+    <div class="form-group">
+    <label for="lng">{{__('Lng')}}:</label>
+    <input type="text" class="form-control" id="lng" name="lng">
+  </div>
 
 </div>
 </div>
