@@ -102,7 +102,7 @@
         </main>
         <footer>
             <div class="container py-4">
-                &copy; Copyrights {{date('Y')}} by logiDevs
+                &copy; Copyrights {{date('Y')}} by logiDEVS
             </div>
         </footer>
     </div>
