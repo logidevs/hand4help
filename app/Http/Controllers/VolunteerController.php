@@ -18,7 +18,7 @@ class VolunteerController extends Controller
      */
     public function index()
     {
-        $volunteers=Volunteer::paginate(10);
+        $volunteers=Volunteer::with('user')->latest()->paginate(5);
 
         return view('volunteer.index', compact('volunteers'));
     }

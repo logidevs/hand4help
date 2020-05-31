@@ -16,7 +16,7 @@ class RequesterController extends Controller
      */
     public function index()
     {
-        $requesters=Requester::paginate(10);
+        $requesters=Requester::with('volunteer')->latest()->paginate(4);
 
         return view('requester.index', compact('requesters'));
     }

@@ -24,6 +24,7 @@ Auth::routes();
 Route::get('/', 'HomeController@map')->name('home');
 
 Route::get('/map', 'HomeController@map')->name('map');
+Route::get('/aboutUs', 'HomeController@aboutUs')->name('aboutUs');
 
 Route::get('/volunteer/profile', 'VolunteerController@profile')->name('volunteer.profile');
 Route::resource('/volunteer', 'VolunteerController');

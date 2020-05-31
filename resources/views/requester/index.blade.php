@@ -2,29 +2,39 @@
 
 @section('content')
 <div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
+   <h3>Admin</h3> 
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-3">
+            @include('partials.admin_menu')
+        </div>
+        <div class="col-md-9">
             <div class="card">
                 <div class="card-header">{{__('Requests')}}: ({{__('Total count')}}: {{$requesters->total()}})</div>
 
-                <div class="card-body">
                     <table class="table table-sm table-striped">
                         <thead>
                             <tr>
+                                <th>{{__('ID')}}</th>
                                 <th>{{__('Name')}}</th>
                                 <th>{{__('Email')}}</th>
                                 <th>{{__('Phone')}}</th>
                                 <th>{{__('Requested at')}}</th>
+                                <th>{{__('Request taken from')}}</th>
                                 <th>{{__('Options')}}</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($requesters as $requester)
                             <tr>
+                                <td>#{{$requester->id}}</td>
                                 <td>{{$requester->name}}</td>
                                 <td>{{$requester->email}}</td>
                                 <td>{{$requester->phone}}</td>
                                 <td>{{$requester->created_at->format('d.m.Y H:i:s')}}</td>
+                                <td>{{$requester->volunteer->name}}</td>
                                 <td>
                                     <form method="POST" action="{{route('requester.destroy', $requester->id)}}">
                                         @csrf
@@ -36,8 +46,10 @@
                              @endforeach
                         </tbody>
                     </table>
+                    <div class="card-footer">
+                        {{$requesters->links()}}
+                    </div>
 
-                </div>
             </div>
         </div>
     </div>

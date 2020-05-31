@@ -42,7 +42,7 @@
                                 <a class="nav-link {{ request()->routeIs('volunteer.create') ? 'active' : '' }}" href="{{ route('volunteer.create') }}"><span class="ti-medall {{ request()->routeIs('volunteer.create') ? 'text-success' : '' }}"></span> {{ __('Offer to help') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="{{ route('login') }}"><span class="ti-help-alt"></span> {{ __('About us') }}</a>
+                                <a class="nav-link " href="{{ route('aboutUs') }}"><span class="ti-help-alt"></span> {{ __('About us') }}</a>
                             </li>
                     </ul>
 
@@ -70,9 +70,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @if(auth()->user()->role=='admin')
-                                    <a class="dropdown-item" href="{{route('requester.index')}}">{{__('Requests')}}</a>
-                                    <a class="dropdown-item" href="{{route('volunteer.index')}}">{{__('Volunteers')}}</a>
-                                        <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{route('requester.index')}}">{{__('Admin panel')}}</a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

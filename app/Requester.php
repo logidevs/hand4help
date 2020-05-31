@@ -10,4 +10,8 @@ class Requester extends Model
     {
         return $this->belongsToMany('App\TypeOfSupport', 'requester_type_of_support');
     }
+    public function volunteer()
+    {
+        return $this->belongsTo('App\User')->withDefault();
+    }
 }

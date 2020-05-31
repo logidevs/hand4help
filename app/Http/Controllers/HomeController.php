@@ -32,4 +32,9 @@ class HomeController extends Controller
         $requesters=Requester::whereNull('volunteer_id')->get();
         return view('map', compact('requesters'));
     }
+
+    public function aboutUs()
+    {
+        return view('aboutUs');
+    }
 }
