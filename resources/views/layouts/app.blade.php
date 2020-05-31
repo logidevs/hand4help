@@ -39,10 +39,14 @@
                                 <a class="nav-link {{ request()->routeIs('requester.create') ? 'active' : '' }}" href="{{ route('requester.create') }}"><span class="ti-heart-broken {{ request()->routeIs('requester.create') ? 'text-danger' : '' }}"></span> {{ __('Ask for help') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ request()->routeIs('volunteer.create') ? 'active' : '' }}" href="@auth {{ route('map') }} @else {{ route('volunteer.create') }} @endauth"><span class="ti-medall {{ request()->routeIs('volunteer.create') ? 'text-success' : '' }}"></span> {{ __('Offer to help') }}</a>
+                                @auth
+                                <a class="nav-link {{ request()->routeIs('map') ? 'active' : '' }}" href="{{ route('map') }}"><span class="ti-medall {{ request()->routeIs('map') ? 'text-success' : '' }}"></span> {{ __('Offer to help') }}</a>
+                                @else
+                                <a class="nav-link {{ request()->routeIs('volunteer.create') ? 'active' : '' }}" href="{{ route('volunteer.create') }}"><span class="ti-medall {{ request()->routeIs('volunteer.create') ? 'text-success' : '' }}"></span> {{ __('Offer to help') }}</a>
+                                @endauth
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ request()->routeIs('covid_statistics') ? 'active' : '' }}" href="{{ route('covid_statistics') }}"><span class="ti-help-alt"></span> {{ __('Covid-19 Data') }}</a>
+                                <a class="nav-link {{ request()->routeIs('covid_statistics') ? 'active' : '' }}" href="{{ route('covid_statistics') }}"><span class="ti-stats-up"></span> {{ __('Covid-19 Data') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link " href="{{ route('aboutUs') }}"><span class="ti-help-alt"></span> {{ __('About us') }}</a>
@@ -72,6 +76,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{route('volunteer.profile')}}">{{__('Profile')}}</a>
                                     @if(auth()->user()->role=='admin')
                                     <a class="dropdown-item" href="{{route('requester.index')}}">{{__('Admin panel')}}</a>
                                     @endif

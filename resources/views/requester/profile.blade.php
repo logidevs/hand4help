@@ -29,6 +29,18 @@
                                 @endforeach
                             </td>
                         </tr>
+                        @if(!is_null($requester->asker_name))
+                        <tr>
+                            <th>{{'Person who asked for help'}}</th>
+                            <td>
+                                {{$requester->asker_name}}<br>
+                                 {{$requester->asker_email}}<br>
+                                  {{$requester->asker_phone}}<br>
+                                   {{$requester->asker_relationship}}<br>
+                                    {{$requester->asker_address}}
+                            </td>
+                        </tr>
+                        @endif
                         <tr>
                             <th colspan="2">{{__('Location')}} <br>
 

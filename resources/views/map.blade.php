@@ -24,6 +24,7 @@ function initMap() {
         var map = new google.maps.Map(document.getElementById('googleMap'), {
           zoom: 8,
           center: {lat: 42.57469603846697, lng: 20.84208736010453},
+          streetViewControl: false,
           styles:[
     {
         "featureType": "administrative",

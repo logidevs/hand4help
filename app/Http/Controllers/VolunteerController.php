@@ -111,7 +111,9 @@ class VolunteerController extends Controller
 
     public function profile()
     {
-        return view('volunteer.profile');
+        $requests_in_progress=Requester::where('volunteer_id', auth()->user()->id)->where('is_finished', false)->get();
+        $requests_finished=Requester::where('volunteer_id', auth()->user()->id)->where('is_finished', true)->get();
+        return view('volunteer.profile', compact('requests_in_progress', 'requests_finished'));
     }
 
     public function takeRequest(Requester $requester)

@@ -22,7 +22,7 @@
                                 <th>{{__('Email')}}</th>
                                 <th>{{__('Phone')}}</th>
                                 <th>{{__('Requested at')}}</th>
-                                <th>{{__('Request taken from')}}</th>
+                                <th>{{__('Request status')}}</th>
                                 <th>{{__('Options')}}</th>
                             </tr>
                         </thead>
@@ -34,7 +34,13 @@
                                 <td>{{$requester->email}}</td>
                                 <td>{{$requester->phone}}</td>
                                 <td>{{$requester->created_at->format('d.m.Y H:i:s')}}</td>
-                                <td>{{$requester->volunteer->name}}</td>
+                                <td>
+                                    @if(!is_null($requester->volunteer_id)&&$requester->is_finished==true)
+                                            finished
+                                            @elseif(!is_null($requester->volunteer_id))
+                                            in progress
+                                    @endif
+                                </td>
                                 <td>
                                     <form method="POST" action="{{route('requester.destroy', $requester->id)}}">
                                         @csrf

@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\TypeOfSupport;
-use App\TypeOfSupport;
-use App\User;
+
 use Illuminate\Http\Request;
 
 class TypeOfSupportController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +19,8 @@ class TypeOfSupportController extends Controller
      */
     public function index()
     {
-        //
+        $typeOfSupports=TypeOfSupport::get();
+        return view('typeOfSupport.index', compact('typeOfSupports'));
     }
 
     /**
@@ -37,7 +41,23 @@ class TypeOfSupportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name_sr' => 'required|string|max:255',
+            'name_en' => 'string|max:255',
+            'name_al' => 'string|max:255'
+
+        ]);
+
+
+        $typeOfSupport=new TypeOfSupport;
+        $typeOfSupport->name_sr=$request->name_sr;
+        $typeOfSupport->name_en=$request->name_en;
+        $typeOfSupport->name_al=$request->name_al;
+        $typeOfSupport->save();
+
+        $requester->typeOfSupports()->sync($request->support);
+
+        return redirect()->route('map');
     }
 
     /**

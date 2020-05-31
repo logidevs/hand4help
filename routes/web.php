@@ -31,6 +31,9 @@ Route::get('/aboutUs', 'HomeController@aboutUs')->name('aboutUs');
 Route::get('/volunteer/profile', 'VolunteerController@profile')->name('volunteer.profile');
 Route::resource('/volunteer', 'VolunteerController');
 Route::get('/requester/profile/{requester}', 'RequesterController@profile')->name('requester.profile');
+Route::get('/requester/closeRequest/{requester}', 'RequesterController@closeRequest')->name('requester.closeRequest');
+Route::get('/requester/openRequest/{requester}', 'RequesterController@openRequest')->name('requester.openRequest');
 Route::resource('/requester', 'RequesterController');
+Route::resource('/typeOfSupport', 'TypeOfSupportController');
 
 Route::post('/volunteer/takeRequest/{requester}', 'VolunteerController@takeRequest')->name('volunteer.takeRequest');

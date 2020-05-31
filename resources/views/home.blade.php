@@ -137,7 +137,7 @@ body {
         <img src="{{asset('img/4.jpg')}}" alt="" class="img-fluid">
         <div class="container">
           <div class="carousel-caption">
-            <h1>{{__('Offer help')}}</h1>
+            <h1>{{__('Offer to help')}}</h1>
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
             <p><a class="btn btn-lg btn-success" href="{{route('volunteer.create')}}" role="button">{{__('Become a volunteer')}}</a></p>
           </div>

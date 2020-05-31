@@ -28,7 +28,7 @@
                             <tr>
                                 <td>#{{$volunteer->user->id}}</td>
                                 <td>{{$volunteer->name}}</td>
-                                <td>{{$volunteer->email}}</td>
+                                <td>{{$volunteer->user->email}}</td>
                                 <td>{{$volunteer->phone}}</td>
                                 <td>{{$volunteer->created_at->format('d.m.Y H:i:s')}}</td>
                                 <td>

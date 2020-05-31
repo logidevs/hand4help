@@ -13,7 +13,7 @@
 		    <a class="nav-link" href="{{route('volunteer.index')}}">{{__('Volunteers')}}</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Bans</a>
+		    <a class="nav-link" href={{route('typeOfSupport.index')}}>{{__('Support types')}}</a>
 		  </li>
 		</ul>
 	</div>

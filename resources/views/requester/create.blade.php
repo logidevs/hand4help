@@ -146,7 +146,7 @@
     }
       function initMap(myLtnlng) {
           var map = new google.maps.Map(
-            document.getElementById('map'), {zoom: 13, center: myLtnlng});
+            document.getElementById('map'), {zoom: 13, center: myLtnlng,streetViewControl: false});
         var infoWindow = new google.maps.InfoWindow(
             {content: 'Your current Location is '+myLtnlng.lat+":"+myLtnlng.lng, position: myLtnlng});
         infoWindow.open(map);

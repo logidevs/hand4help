@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class RequesterController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin', ['except' => ['profile','closeRequest','openRequest', 'create', 'store']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -108,6 +112,19 @@ class RequesterController extends Controller
     public function profile(Requester $requester)
     {
         return view('requester.profile', compact('requester'));
+    }
+
+    public function closeRequest(Requester $requester)
+    {
+        $requester->is_finished=true;
+        $requester->save();
+        return redirect()->route('volunteer.profile');
+    }
+    public function openRequest(Requester $requester)
+    {
+        $requester->is_finished=false;
+        $requester->save();
+        return redirect()->route('volunteer.profile');
     }
 
     /**
