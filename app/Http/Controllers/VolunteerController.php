@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Volunteer;
+use App\TypeOfSupport;
+use App\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class VolunteerController extends Controller
@@ -24,7 +27,8 @@ class VolunteerController extends Controller
      */
     public function create()
     {
-        return view('volunteer.create');
+        $typeOfSupports=TypeOfSupport::get();
+        return view('volunteer.create', compact('typeOfSupports'));
     }
 
     /**
@@ -35,7 +39,34 @@ class VolunteerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+            'phone'=>'required|string|min:8',
+            'support'=>'required'
+        ]);
+
+        $user=new User;
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->password=Hash::make($request->password);
+        $user->role='volunteer';
+        $user->save();
+
+        $volunteer=new Volunteer;
+        $volunteer->name=$request->name;
+        $volunteer->user_id=$user->id;
+        $volunteer->phone=$request->phone;
+        $volunteer->name=$request->name;
+        $volunteer->latitude=$request->latitude;
+        $volunteer->longitude=$request->longitude;
+        $volunteer->save();
+
+        \Auth::loginUsingId($user->id);
+
+        return redirect()->route('volunteer.create');
+
     }
 
     /**
@@ -70,6 +101,12 @@ class VolunteerController extends Controller
     public function update(Request $request, Volunteer $volunteer)
     {
         //
+    }
+
+    public function profile()
+    {
+        $volunteer=User::findOrCreate(auth()->user->id);
+        return view('volunteer.profile', compact('volunteer'));
     }
 
     /**
