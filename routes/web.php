@@ -27,4 +27,7 @@ Route::get('/map', 'HomeController@map')->name('map');
 
 Route::get('/volunteer/profile', 'VolunteerController@profile')->name('volunteer.profile');
 Route::resource('/volunteer', 'VolunteerController');
+Route::get('/requester/profile/{requester}', 'RequesterController@profile')->name('requester.profile');
 Route::resource('/requester', 'RequesterController');
+
+Route::post('/volunteer/takeRequest/{requester}', 'VolunteerController@takeRequest')->name('volunteer.takeRequest');

@@ -4,8 +4,8 @@
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{__('Offer to help')}}</div>
+            <div class="card border-danger">
+                <div class="card-header">{{__('Ask for help')}}</div>
 
                 <div class="card-body">
                   @if ($errors->any())
@@ -82,7 +82,7 @@
   </div>
   <div class="form-group">
 
-  <label>{{__('General volunteer support')}}:</label>
+  <label>{{__('I need help for')}}:</label>
 </div>
 <div class="row">
   @foreach($typeOfSupports as $typeOfSupport)

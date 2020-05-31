@@ -16,7 +16,9 @@ class RequesterController extends Controller
      */
     public function index()
     {
-        //
+        $requesters=Requester::paginate(10);
+
+        return view('requester.index', compact('requesters'));
     }
 
     /**
@@ -103,6 +105,11 @@ class RequesterController extends Controller
         //
     }
 
+    public function profile(Requester $requester)
+    {
+        return view('requester.profile', compact('requester'));
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -111,6 +118,7 @@ class RequesterController extends Controller
      */
     public function destroy(Requester $requester)
     {
-        //
+        $requester->delete();
+        return redirect()->route('requester.index');
     }
 }

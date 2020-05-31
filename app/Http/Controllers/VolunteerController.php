@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Volunteer;
+use App\Requester;
 use App\TypeOfSupport;
 use App\User;
 use Illuminate\Support\Facades\Hash;
@@ -17,7 +18,9 @@ class VolunteerController extends Controller
      */
     public function index()
     {
-        //
+        $volunteers=Volunteer::paginate(10);
+
+        return view('volunteer.index', compact('volunteers'));
     }
 
     /**
@@ -111,6 +114,13 @@ class VolunteerController extends Controller
         return view('volunteer.profile');
     }
 
+    public function takeRequest(Requester $requester)
+    {
+        $requester->volunteer_id=auth()->user()->id;
+        $requester->save();
+        return redirect()->route('map');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -119,6 +129,7 @@ class VolunteerController extends Controller
      */
     public function destroy(Volunteer $volunteer)
     {
-        //
+        $volunteer->delete();
+        return redirect()->route('volunteer.index');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Requester;
 
 class HomeController extends Controller
 {
@@ -28,6 +29,7 @@ class HomeController extends Controller
 
     public function map()
     {
-        return view('map');
+        $requesters=Requester::whereNull('volunteer_id')->get();
+        return view('map', compact('requesters'));
     }
 }
