@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\TypeOfSupport;
+use App\TypeOfSupport;
+use App\User;
 use Illuminate\Http\Request;
 
 class TypeOfSupportController extends Controller

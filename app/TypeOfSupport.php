@@ -16,16 +16,16 @@ class TypeOfSupport extends Model
         $attribute_sr=$attribute."_sr";
         $locale=app()->getLocale();
 
-        if($locale=='en'&&!is_null($this->attributes[$attribute_en]))
+        if($locale=='sr'&&!is_null($this->attributes[$attribute_sr]))
         {
-        	return $this->attributes[$attribute_en];
+        	return $this->attributes[$attribute_sr];
         }
         elseif($locale=='al'&&!is_null($this->attributes[$attribute_al]))
         {
         	return $this->attributes[$attribute_al];
         }
         else{
-        	return $this->attributes[$attribute_sr];
+        	return $this->attributes[$attribute_en];
         }
     }
 }

@@ -29,6 +29,6 @@
   "Reset Password": "Resetuj lozinku",
   "Reset Password Notification": "Obaveštenje o resetovanju lozinke",
   "Send Password Reset Link": "Pošalji link za reset lozinke",
-  "You are receiving this email because we received a password reset request for your account.": "Ovaj e-mail Vam je poslat jer ste zahtevali promenu lozinke za vaš nalog."
-
+  "You are receiving this email because we received a password reset request for your account.": "Ovaj e-mail Vam je poslat jer ste zahtevali promenu lozinke za vaš nalog.",
+  "Your own info":"Vaši lični podaci"
 }

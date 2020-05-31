@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Requester;
+use App\TypeOfSupport;
+use App\User;
 use Illuminate\Http\Request;
 
 class RequesterController extends Controller
@@ -24,7 +26,8 @@ class RequesterController extends Controller
      */
     public function create()
     {
-        return view('requester.create');
+        $typeOfSupports=TypeOfSupport::get();
+        return view('requester.create', compact('typeOfSupports'));
     }
 
     /**
@@ -35,7 +38,35 @@ class RequesterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'asker_name' => 'nullable|string|max:255',
+            'asker_email' => 'required_with:asker_name|nullable|string|email|max:255',
+            'asker_phone'=>'required_with:asker_name|nullable|string|min:8',
+            'asker_relationship' => 'required_with:asker_name|nullable|string|max:255',
+            'asker_address' => 'required_with:asker_name|nullable|string|max:255',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'phone'=>'required|string|min:8',
+            'support'=>'required'
+        ]);
+
+
+        $requester=new Requester;
+        $requester->asker_name=$request->asker_name;
+        $requester->asker_email=$request->asker_email;
+        $requester->asker_phone=$request->asker_phone;
+        $requester->asker_relationship=$request->asker_relationship;
+        $requester->asker_address=$request->asker_address;
+        $requester->name=$request->name;
+        $requester->email=$request->email;
+        $requester->phone=$request->phone;
+        $requester->latitude=$request->latitude;
+        $requester->longitude=$request->longitude;
+        $requester->save();
+
+        $requester->typeOfSupports()->sync($request->support);
+
+        return redirect()->route('map');
     }
 
     /**

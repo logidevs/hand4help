@@ -5,10 +5,21 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{__('Ask for help')}}</div>
+                <div class="card-header">{{__('Offer to help')}}</div>
 
                 <div class="card-body">
-<form>
+                  @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+<form method="POST" action="{{route('requester.store')}}">
+  @csrf
+  <!-- asker data -->
   <p>
   <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
     {{__('If you ask for someone else click this button first')}}
@@ -21,14 +32,14 @@
     <div class="row">
       <div class="col">
                 <div class="form-group">
-    <label for="name">{{__('Name')}}:</label>
-    <input type="text" class="form-control" id="name">
+    <label for="asker_name">{{__('Name')}}:</label>
+    <input type="text" class="form-control" id="asker_name" name="asker_name" value="{{old('asker_name')}}">
   </div>
       </div>
             <div class="col">
                 <div class="form-group">
-    <label for="name">{{__('Relationship')}}:</label>
-    <input type="text" class="form-control" id="name">
+    <label for="asker_relationship">{{__('Relationship')}}:</label>
+    <input type="text" class="form-control" id="asker_relationship" name="asker_relationship" value="{{old('asker_relationship')}}">
   </div>
       </div>
     </div>
@@ -36,68 +47,52 @@
   <div class="row">
     <div class="col">
        <div class="form-group">
-    <label for="exampleInputEmail1">{{__('Email')}}:</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <label for="asker_email">{{__('Email')}}:</label>
+    <input type="email" class="form-control" id="asker_email" aria-describedby="asker_emailHelp" name="asker_email" value="{{old('asker_email')}}">
   </div>
     </div>
     <div class="col">
             <div class="form-group">
-    <label for="phone">{{__('Phone')}}:</label>
-    <input type="text" class="form-control" id="phone">
+    <label for="asker_phone">{{__('Phone')}}:</label>
+    <input type="text" class="form-control" id="asker_phone" name="asker_phone" value="{{old('asker_phone')}}">
   </div>
     </div>
   </div>
               <div class="form-group">
-    <label for="address">{{__('Address')}}:</label>
-    <textarea class="form-control" name="address" id="" rows="5"></textarea>
+    <label for="asker_address">{{__('Address')}}:</label>
+    <textarea class="form-control" name="asker_address" id="" rows="5" name="asker_address" >{{old('asker_address')}}</textarea>
   </div>
  
 
   </div>
 </div>
+<!-- end of asker data -->
     <div class="form-group">
     <label for="name">{{__('Name')}}:</label>
-    <input type="text" class="form-control" id="name">
+    <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}">
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">{{__('Email')}}:</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input type="email" name="email"  value="{{old('email')}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <small id="emailHelp" class="form-text text-muted">Mail će biti prosleđen jedino onima kojima želite da pomognete.</small>
   </div>
       <div class="form-group">
     <label for="phone">{{__('Phone')}}:</label>
-    <input type="text" class="form-control" id="phone">
+    <input type="text" class="form-control" id="phone" name="phone" value="{{old('phone')}}">
   </div>
   <div class="form-group">
 
-  <label>{{__('I need help for')}}:</label>
+  <label>{{__('General volunteer support')}}:</label>
 </div>
 <div class="row">
-    <div class="col">
-          <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">{{__('Delivery of goods')}}</label>
-  </div>
-    </div>
-        <div class="col">
-          <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">{{__('Childcare')}}</label>
-  </div>
-</div>
-          <div class="col">
-          <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">{{__('Eldercare')}}</label>
-  </div>
-    </div>
-              <div class="col">
-          <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">{{__('Legal assistance')}}</label>
-  </div>
-    </div>
-
-    
+  @foreach($typeOfSupports as $typeOfSupport)
+    <div class="col-md-3">
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="checkbox_{{$typeOfSupport->id}}" name="support[]" value="{{$typeOfSupport->id}}">
+        <label class="form-check-label" for="checkbox_{{$typeOfSupport->id}}">{{$typeOfSupport->name}}</label>
+      </div>
+    </div> 
+    @endforeach
 </div>
   <div class="form-group">
 
@@ -108,8 +103,23 @@
             <div id="map" style="width:100%;height:200px;"></div>
         </div>
     </div>
+<div class="row">
+    <div class="col">
+    <div class="form-group">
+    <label for="latitude">{{__('Latitude')}}:</label>
+    <input type="text" class="form-control" id="latitude" name="latitude">
+  </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+        <div class="col">
+    <div class="form-group">
+    <label for="longitude">{{__('Longitude')}}:</label>
+    <input type="text" class="form-control" id="longitude" name="longitude">
+  </div>
+
+</div>
+</div>
+  <button type="submit" class="btn btn-primary btn-block">{{__('Apply to volunteer')}}</button>
 </form>
                 </div>
             </div>
@@ -121,28 +131,43 @@
 @section('script')
     
     <script>
-      function initMap() {
-        var myLatlng = {lat: 42.57469603846697, lng: 20.84208736010453};
-
-        var map = new google.maps.Map(
-            document.getElementById('map'), {zoom: 8, center: myLatlng});
-
-        // Create the initial InfoWindow.
+    function setCenter(){
+        var myLtnlng={lat:42.57469603846697, lng:20.84208736010453};
+            navigator.geolocation.getCurrentPosition(function(position) {
+            // Center on user's current location if geolocation prompt allowed
+            myLtnlng.lat=position.coords.latitude;
+            myLtnlng.lng=position.coords.longitude;
+            document.getElementById('latitude').value = myLtnlng.lat;
+            document.getElementById('longitude').value = myLtnlng.lng;
+            initMap(myLtnlng);
+          }, function(positionError) {
+            initMap(myLtnlng);
+          });
+    }
+      function initMap(myLtnlng) {
+          var map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 13, center: myLtnlng});
         var infoWindow = new google.maps.InfoWindow(
-            {content: 'Click the map to get Lat/Lng!', position: myLatlng});
+            {content: 'Your current Location is '+myLtnlng.lat+":"+myLtnlng.lng, position: myLtnlng});
         infoWindow.open(map);
 
         // Configure the click listener.
         map.addListener('click', function(mapsMouseEvent) {
           // Close the current InfoWindow.
           infoWindow.close();
+           var myLatLng = mapsMouseEvent.latLng;
+            var lat = myLatLng.lat();
+            var lng = myLatLng.lng();
 
           // Create a new InfoWindow.
           infoWindow = new google.maps.InfoWindow({position: mapsMouseEvent.latLng});
           infoWindow.setContent(mapsMouseEvent.latLng.toString());
+
+          document.getElementById('latitude').value = lat;
+          document.getElementById('longitude').value = lng;
           infoWindow.open(map);
         });
       }
     </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXqsuWqZ77GnXST-MWvh9dqeAfYh_JRMo&callback=initMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXqsuWqZ77GnXST-MWvh9dqeAfYh_JRMo&callback=setCenter"></script>
 @endsection

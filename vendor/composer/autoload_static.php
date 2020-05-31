@@ -471,6 +471,7 @@ class ComposerStaticInite37a425fe9eace910a46831cdfd42846
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\RequesterController' => __DIR__ . '/../..' . '/app/Http/Controllers/RequesterController.php',
+        'App\\Http\\Controllers\\TypeOfSupportController' => __DIR__ . '/../..' . '/app/Http/Controllers/TypeOfSupportController.php',
         'App\\Http\\Controllers\\VolunteerController' => __DIR__ . '/../..' . '/app/Http/Controllers/VolunteerController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',

@@ -47,6 +47,8 @@ class VolunteerController extends Controller
             'support'=>'required'
         ]);
 
+        
+
         $user=new User;
         $user->name=$request->name;
         $user->email=$request->email;
@@ -58,14 +60,15 @@ class VolunteerController extends Controller
         $volunteer->name=$request->name;
         $volunteer->user_id=$user->id;
         $volunteer->phone=$request->phone;
-        $volunteer->name=$request->name;
         $volunteer->latitude=$request->latitude;
         $volunteer->longitude=$request->longitude;
         $volunteer->save();
 
+        $volunteer->typeOfSupports()->sync($request->support);
+
         \Auth::loginUsingId($user->id);
 
-        return redirect()->route('volunteer.create');
+        return redirect()->route('volunteer.profile');
 
     }
 
@@ -105,8 +108,7 @@ class VolunteerController extends Controller
 
     public function profile()
     {
-        $volunteer=User::findOrCreate(auth()->user->id);
-        return view('volunteer.profile', compact('volunteer'));
+        return view('volunteer.profile');
     }
 
     /**
