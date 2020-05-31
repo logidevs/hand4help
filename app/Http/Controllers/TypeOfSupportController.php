@@ -55,9 +55,7 @@ class TypeOfSupportController extends Controller
         $typeOfSupport->name_al=$request->name_al;
         $typeOfSupport->save();
 
-        $requester->typeOfSupports()->sync($request->support);
-
-        return redirect()->route('map');
+        return redirect()->route('typeOfSupport.index');
     }
 
     /**
@@ -102,6 +100,8 @@ class TypeOfSupportController extends Controller
      */
     public function destroy(TypeOfSupport $typeOfSupport)
     {
-        //
+        if($typeOfSupport->)
+        $typeOfSupport->delete();
+        return redirect()->route('typeOfSupport.index');
     }
 }

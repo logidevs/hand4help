@@ -64,7 +64,11 @@
                                 <td>#{{$typeOfSupport->id}}</td>
                                 <td>{{$typeOfSupport->name}}</td>
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-danger">Delete type</a>
+                                    <form method="POST" action="{{route('typeOfSupport.destroy', $typeOfSupport->id)}}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" onClick="return confirm('Are you sure?');" class="btn btn-sm btn-danger">{{__('Delete request')}}</button>
+                                    </form>
                                 </td>
                             </tr>
                              @endforeach

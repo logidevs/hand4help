@@ -28,4 +28,12 @@ class TypeOfSupport extends Model
         	return $this->attributes[$attribute_en];
         }
     }
+    public function volunteers()
+    {
+        return $this->belongsToMany('App\Volunteer', 'volunteer_type_of_support');
+    }
+    public function requesters()
+    {
+        return $this->belongsToMany('App\Requester', 'requester_type_of_support');
+    }
 }
