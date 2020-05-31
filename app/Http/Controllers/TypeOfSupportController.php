@@ -100,7 +100,10 @@ class TypeOfSupportController extends Controller
      */
     public function destroy(TypeOfSupport $typeOfSupport)
     {
-        if($typeOfSupport->)
+        if($typeOfSupport->volunteers->count()>0||$typeOfSupport->requesters->count()>0)
+        {
+            return redirect()->route('typeOfSupport.index');
+        }
         $typeOfSupport->delete();
         return redirect()->route('typeOfSupport.index');
     }

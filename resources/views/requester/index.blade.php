@@ -30,7 +30,7 @@
                             @foreach($requesters as $requester)
                             <tr>
                                 <td>#{{$requester->id}}</td>
-                                <td>{{$requester->name}}</td>
+                                <td><a href="{{route('requester.profile', $requester->id)}}">{{$requester->name}}</a></td>
                                 <td>{{$requester->email}}</td>
                                 <td>{{$requester->phone}}</td>
                                 <td>{{$requester->created_at->format('d.m.Y H:i:s')}}</td>
