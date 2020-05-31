@@ -41,7 +41,7 @@
                     <th>hospitalised</th>
                     <th>tested24hours</th>
                     <th>infected24hours</th>
-                    <th>deceased24hours</th>
+                    <th>deceasedTotal</th>
                 </tr>
                 <tr>
                     <td>{{$covid_kosovo->infected}}</td>

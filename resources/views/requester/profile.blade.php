@@ -48,12 +48,14 @@
                             </th>
                         </tr>
                     </table>
+                    @auth
                     @if($requester->volunteer_id!=auth()->user()->id)
                     <form method="POST" action="{{route('volunteer.takeRequest', $requester->id)}}">
                         @csrf
                         <button class="btn btn-block btn-primary" type="submit">{{__('I will take this request')}}</button>
                     </form>
                     @endif
+                    @endauth
                 </div>
             </div>
         </div>

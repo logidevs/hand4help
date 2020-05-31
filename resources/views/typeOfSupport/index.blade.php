@@ -67,7 +67,7 @@
                                     <form method="POST" action="{{route('typeOfSupport.destroy', $typeOfSupport->id)}}">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" onClick="return confirm('Are you sure?');" class="btn btn-sm btn-danger">{{__('Delete request')}}</button>
+                                        <button type="submit" onClick="return confirm('Are you sure?');" class="btn btn-sm btn-danger">{{__('Delete')}}</button>
                                     </form>
                                 </td>
                             </tr>

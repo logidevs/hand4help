@@ -119,7 +119,7 @@
 
 </div>
 </div>
-  <button type="submit" class="btn btn-primary btn-block">{{__('Apply to volunteer')}}</button>
+  <button type="submit" class="btn btn-primary btn-block">{{__('Apply to get help')}}</button>
 </form>
                 </div>
             </div>

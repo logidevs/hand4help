@@ -72,7 +72,7 @@ class RequesterController extends Controller
 
         $requester->typeOfSupports()->sync($request->support);
 
-        return redirect()->route('map');
+        return redirect()->route('requester.profile', $requester->id);
     }
 
     /**
