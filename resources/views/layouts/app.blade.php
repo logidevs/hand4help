@@ -39,7 +39,7 @@
                                 <a class="nav-link {{ request()->routeIs('requester.create') ? 'active' : '' }}" href="{{ route('requester.create') }}"><span class="ti-heart-broken {{ request()->routeIs('requester.create') ? 'text-danger' : '' }}"></span> {{ __('Ask for help') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ request()->routeIs('volunteer.create') ? 'active' : '' }}" href="{{ route('volunteer.create') }}"><span class="ti-medall {{ request()->routeIs('volunteer.create') ? 'text-success' : '' }}"></span> {{ __('Offer to help') }}</a>
+                                <a class="nav-link {{ request()->routeIs('volunteer.create') ? 'active' : '' }}" href="@auth {{ route('map') }} @else {{ route('volunteer.create') }} @endauth"><span class="ti-medall {{ request()->routeIs('volunteer.create') ? 'text-success' : '' }}"></span> {{ __('Offer to help') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->routeIs('covid_statistics') ? 'active' : '' }}" href="{{ route('covid_statistics') }}"><span class="ti-help-alt"></span> {{ __('Covid-19 Data') }}</a>
@@ -95,6 +95,11 @@
         <main class="">
             @yield('content')
         </main>
+        <footer>
+            <div class="container py-4">
+                &copy; Copyrights {{date('Y')}} by logiDevs
+            </div>
+        </footer>
     </div>
     @yield('script')
 </body>

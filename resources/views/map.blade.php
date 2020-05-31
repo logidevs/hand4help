@@ -3,7 +3,7 @@
 @section('content')
 <div style="">
 
-                    <div id="googleMap" style="width:100%;height:550px;"></div>
+                    <div id="googleMap" style="width:100%;height:80vh;"></div>
 </div>
 @endsection
 

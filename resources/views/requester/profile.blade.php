@@ -29,6 +29,12 @@
                                 @endforeach
                             </td>
                         </tr>
+                        <tr>
+                            <th colspan="2">{{__('Location')}} <br>
+
+                                  <div id="map" style="width:100%;height:200px;"></div>
+                            </th>
+                        </tr>
                     </table>
                     <form method="POST" action="{{route('volunteer.takeRequest', $requester->id)}}">
                         @csrf
@@ -40,3 +46,26 @@
     </div>
 </div>
 @endsection
+
+@section('script')
+    
+    <script>
+function initMap() {
+  var myLatLng = {lat: {{$requester->latitude}}, lng: {{$requester->longitude}}};
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 12,
+    center: myLatLng,
+    streetViewControl: false,
+  });
+
+  var marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    title: 'Hello World!'
+  });
+}
+    </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXqsuWqZ77GnXST-MWvh9dqeAfYh_JRMo&callback=initMap"></script>
+@endsection
+
