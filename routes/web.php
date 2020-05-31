@@ -21,6 +21,8 @@ Route::get('locale/{locale}', function ($locale){
 
 Auth::routes();
 
+Route::get('/covid-statistics', 'HomeController@covid_statistics')->name('covid_statistics');
+
 Route::get('/', 'HomeController@map')->name('home');
 
 Route::get('/map', 'HomeController@map')->name('map');

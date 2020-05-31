@@ -42,6 +42,9 @@
                                 <a class="nav-link {{ request()->routeIs('volunteer.create') ? 'active' : '' }}" href="{{ route('volunteer.create') }}"><span class="ti-medall {{ request()->routeIs('volunteer.create') ? 'text-success' : '' }}"></span> {{ __('Offer to help') }}</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link {{ request()->routeIs('covid_statistics') ? 'active' : '' }}" href="{{ route('covid_statistics') }}"><span class="ti-help-alt"></span> {{ __('Covid-19 Data') }}</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link " href="{{ route('aboutUs') }}"><span class="ti-help-alt"></span> {{ __('About us') }}</a>
                             </li>
                     </ul>
